@@ -1,4 +1,5 @@
-import pyPLUTO as pp
+from pyPLUTO import nlast_info
+import pyPLUTO.pload as pp
 import numpy as np
 import matplotlib.pyplot as plt
 import math as m
@@ -290,7 +291,7 @@ def boxFilter(data,n,axis):
 
 def vortTimeAnalysis(**kwargs):
     
-    timeInfo = pp.nlast_info()    
+    timeInfo = nlast_info()    
     tnbeg = kwargs.pop('tbeg',0)
     tnend = kwargs.pop('tend',timeInfo['nlast'])
     dtn = tnend - tnbeg+1

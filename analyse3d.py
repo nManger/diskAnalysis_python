@@ -1,4 +1,5 @@
-import pyPLUTO as pp
+from pyPLUTO import nlast_info
+import pyPLUTO.pload as pp
 import numpy as np
 import json
 import tools3d as too
@@ -25,7 +26,7 @@ def alphaRphiAverage(**kwargs):
     '''
 
     #fetch time info and set analysis times
-    timeInfo = pp.nlast_info()
+    timeInfo = nlast_info()
     
     tbeg = kwargs.get('tbeg',0)
     tend = kwargs.get('tend',timeInfo['nlast'])
@@ -136,7 +137,7 @@ def alphaZphiAverage(gamma,q,**kwargs):
     '''
 
     #fetch time info and set analysis times
-    timeInfo = pp.nlast_info()
+    timeInfo = nlast_info()
     
     tbeg = kwargs.get('tbeg',0)
     tend = kwargs.get('tend',timeInfo['nlast'])
@@ -306,7 +307,7 @@ def rossbyLTser(**kwargs):
     gamma = kwargs.get('gamma',1.0)
 
     #fetch time info and set analysis times
-    timeInfo = pp.nlast_info()
+    timeInfo = nlast_info()
     
     tbeg = kwargs.get('tbeg',0)
     tend = kwargs.get('tend',timeInfo['nlast'])
@@ -512,7 +513,7 @@ def vrmsAverage(**kwargs):
     vphimean = kwargs.pop('vphimean',None)
     
     #fetch time info and set analysis times
-    timeInfo = pp.nlast_info()
+    timeInfo = nlast_info()
     
     tbeg = kwargs.pop('tbeg',0)
     tend = kwargs.pop('tend',timeInfo['nlast'])
@@ -579,7 +580,7 @@ def vrAverage(tbeg,tend,cr_kwargs,rhoAverage=True):
     
     grid = pp.pload(0)
     grid = too.setCompRange(grid,**cr_kwargs)
-    timeInfo = pp.nlast_info()
+    timeInfo = nlast_info()
     if tbeg is None: tbeg = 0
     if tend is None: tend =  timeInfo['nlast']
     dt = tend - tbeg+1
@@ -640,7 +641,7 @@ def vthAverage(cr_kwargs,tbeg=None,tend=None,rhoAverage=False):
     
     grid = pp.pload(0)
     grid = too.setCompRange(grid,**cr_kwargs)
-    timeInfo = pp.nlast_info()
+    timeInfo = nlast_info()
     if tbeg is None: tbeg = 0
     if tend is None: tend =  timeInfo['nlast']
     dt = tend - tbeg+1
